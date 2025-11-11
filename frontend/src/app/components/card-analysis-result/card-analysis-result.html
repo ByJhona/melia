@@ -27,6 +27,18 @@
     </div>
 
     <p><strong>Mensagem Original: </strong> {{ analysis()?.original }}</p>
+
+    <div class="flex flex-col gap-2 mt-2">
+      <label for="email" class="font-bold">Mensagem Original:</label>
+      <textarea
+        id="email"
+        class="textarea w-full"
+        rows="4"
+        [value]="analysis()?.original"
+        disabled
+      ></textarea>
+    </div>
+
     <div class="flex flex-col gap-2 mt-2">
       <label for="response" class="font-bold"
         >Resposta Sugerida (editar):</label

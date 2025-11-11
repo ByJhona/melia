@@ -11,7 +11,7 @@ def process_text_with_ai(text: str) -> TextAnalysisResponse:
 
     # Prompt avançado
     prompt = f"""
-    Você é a Mél.IA, uma assistente virtual para automatizar o processamento
+    Você é a Mel.ia, uma assistente virtual para automatizar o processamento
     de emails de uma grande empresa financeira.
 
     Contexto:
