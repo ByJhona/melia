@@ -42,3 +42,7 @@ app.include_router(email_routes.router)
 @app.get("/")
 async def root():
     return {"message": "Mel.ia Classifier API está rodando 🚀"}
+
+@app.get("/ping")
+async def ping():
+    return {"status": "alive"}
