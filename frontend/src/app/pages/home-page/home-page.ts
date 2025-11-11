@@ -7,6 +7,7 @@ import { ToastService } from '../../services/toast-service';
 import { TextAnalysisResponseInterface } from '../../types/TextAnalysisResponseInterface';
 import { CardAnalysisResult } from '../../components/card-analysis-result/card-analysis-result';
 import { take } from 'rxjs';
+import { HistoryService } from '../../services/history-service';
 
 @Component({
   selector: 'melia-home-page',
@@ -18,6 +19,7 @@ export class HomePage {
   private readonly destroyRef = inject(DestroyRef);
   private readonly ngZone = inject(NgZone);
   private readonly apiServ = inject(ApiService);
+  private readonly historyServ = inject(HistoryService);
   private readonly toastServ = inject(ToastService);
   public readonly isloading = signal<boolean>(false);
   public readonly analisysisResult =
@@ -39,6 +41,7 @@ export class HomePage {
       .subscribe({
         next: (result: TextAnalysisResponseInterface) => {
           this.analisysisResult.set(result);
+          this.historyServ.saveAnalysis(result);
           this.ngZone.onStable
             .asObservable()
             .pipe(take(1))
@@ -67,6 +70,7 @@ export class HomePage {
       .subscribe({
         next: (result: TextAnalysisResponseInterface) => {
           this.analisysisResult.set(result);
+          this.historyServ.saveAnalysis(result);
           this.ngZone.onStable
             .asObservable()
             .pipe(take(1))
