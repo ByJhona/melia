@@ -1,1 +1,49 @@
-<p>card-form-analize-component works!</p>
+<div class="card w-4xl bg-base-100 card-xl shadow-md">
+  <div class="card-body">
+    <h2 class="card-title">
+      <lucide-angular name="sparkle" class="text-primary" /> Análise de Email
+    </h2>
+    <p class="text-neutral-800 m-2">
+      Cole o email que você recebeu e a Mélia irá classificar e sugerir uma
+      resposta
+    </p>
+
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <textarea
+        class="textarea w-full"
+        placeholder="Cole o e-mail que você recebeu..."
+        [formControl]="getFormControl('email')"
+      ></textarea>
+      <div class="justify-center card-actions pt-6">
+        <input
+          class="file-input hover: text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
+          type="file"
+          accept=".txt,.pdf"
+          (change)="onFileChange($event)"
+        />
+
+        <button class="btn btn-primary" type="submit">
+          Analisar com Mélia
+        </button>
+      </div>
+    </form>
+    <div class="divider"></div>
+    <div class="prerequisitos-info">
+      <ul class="bg-base-100">
+        <li class="text-xs opacity-60 mb-0.5">
+          Formatos aceitos:
+          <span class="font-medium text-primary">.txt</span> e
+          <span class="font-medium text-primary">.pdf</span>
+        </li>
+        <li class="text-xs opacity-60 mb-0.5">
+          Tamanho máximo:
+          <span class="font-medium text-secondary">5MB</span>
+        </li>
+        <li class="text-xs opacity-60 mb-0.5">
+          Processamento seguro com
+          <span class="font-medium text-accent">IA</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

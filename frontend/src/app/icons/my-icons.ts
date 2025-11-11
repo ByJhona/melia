@@ -10,6 +10,7 @@ import {
   Mail,
   Target,
   Zap,
+  Sparkle,
 } from 'lucide-angular';
 
 export const myIcons = {
@@ -24,4 +25,5 @@ export const myIcons = {
   Mail,
   Target,
   Zap,
+  Sparkle,
 };
