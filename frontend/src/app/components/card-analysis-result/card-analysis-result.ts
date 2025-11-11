@@ -1,3 +1,4 @@
+import { CategoryEmailEnum } from './../../types/CategoryEmailEnum';
 import { Component, effect, inject, input } from '@angular/core';
 import { TextAnalysisResponseInterface } from '../../types/TextAnalysisResponseInterface';
 import { LucideAngularModule } from 'lucide-angular';
@@ -17,6 +18,7 @@ export class CardAnalysisResult {
   public readonly form = new FormGroup({
     response: new FormControl(''),
   });
+  public readonly categoryEmailEnum = CategoryEmailEnum;
 
   constructor() {
     effect(() => {
@@ -47,5 +49,15 @@ export class CardAnalysisResult {
     this.form.patchValue({
       response: analysis.response,
     });
+  }
+  sendEmail(
+    recipient: string = 'exemplo@autou.com',
+    subject: string = 'Resposta Automática'
+  ) {
+    const body = this.getFormControl('response')?.value ?? '';
+    const mailtoLink = `mailto:${encodeURIComponent(
+      recipient
+    )}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    globalThis.location.href = mailtoLink;
   }
 }

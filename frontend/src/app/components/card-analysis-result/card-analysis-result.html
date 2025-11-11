@@ -10,19 +10,45 @@
 
     }
 
-    <p><strong>Categoria: </strong> {{ analysis()?.category }}</p>
+    <div class="category flex items-center gap-2">
+      <strong>Categoria:</strong>
+
+      <div
+        class="badge badge-soft"
+        [class.badge-success]="
+          analysis()?.category === categoryEmailEnum.Productive
+        "
+        [class.badge-secondary]="
+          analysis()?.category === categoryEmailEnum.Improductive
+        "
+      >
+        {{ analysis()?.category }}
+      </div>
+    </div>
+
     <p><strong>Mensagem Original: </strong> {{ analysis()?.original }}</p>
     <div class="flex flex-col gap-2 mt-2">
-      <label for="response" class="font-bold">Resposta Sugerida:</label>
+      <label for="response" class="font-bold"
+        >Resposta Sugerida (editar):</label
+      >
       <textarea
         id="response"
         class="textarea w-full resize-none"
         [formControl]="getFormControl('response')"
         rows="4"
       ></textarea>
-      <button class="btn btn-sm btn-outline self-end" (click)="copyResponse()">
-        Copiar
-      </button>
+
+      <div class="actions flex flex-row gap-2 mt-2 items-center justify-end">
+        <button
+          class="btn btn-sm btn-outline self-end"
+          (click)="copyResponse()"
+        >
+          Copiar
+        </button>
+        <button class="btn btn-sm btn-primary" (click)="sendEmail()">
+          Enviar por Email
+        </button>
+      </div>
     </div>
   </div>
 </div>
