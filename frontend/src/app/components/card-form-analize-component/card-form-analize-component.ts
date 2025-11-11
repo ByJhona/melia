@@ -1,6 +1,7 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
+import { ToastService } from '../../services/toast-service';
 
 @Component({
   selector: 'melia-card-form-analize-component',
@@ -9,6 +10,7 @@ import { LucideAngularModule } from 'lucide-angular';
   styleUrl: './card-form-analize-component.scss',
 })
 export class CardFormAnalizeComponent {
+  private readonly toastServ = inject(ToastService);
   public readonly form = new FormGroup({
     email: new FormControl<string>(''),
   });
@@ -21,7 +23,10 @@ export class CardFormAnalizeComponent {
     const file = input.files?.[0] ?? null;
 
     if (file && file.size > 5 * 1024 * 1024) {
-      alert('Arquivo excede 5MB!');
+      this.toastServ.error(
+        'O arquivo selecionado excede o tamanho máximo de 5MB.'
+      );
+      input.value = '';
       this.selectedFile.set(null);
       return;
     }
@@ -45,7 +50,9 @@ export class CardFormAnalizeComponent {
       this.emailSent.emit(email);
       this.form.reset();
     } else {
-      alert('Por favor, informe um texto ou selecione um arquivo!');
+      this.toastServ.error(
+        'Por favor, informe um texto ou selecione um arquivo!'
+      );
     }
   }
 

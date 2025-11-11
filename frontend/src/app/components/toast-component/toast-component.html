@@ -1,0 +1,12 @@
+<div class="toast toast-end">
+  @for(toast of toasts(); track toast.id) {
+  <div
+    class="alert"
+    [class.alert-success]="toast.type === toastEnum.SUCCESS"
+    [class.alert-error]="toast.type === toastEnum.ERROR"
+    [class.alert-info]="toast.type === toastEnum.INFO"
+  >
+    <span>{{ toast.message }}</span>
+  </div>
+  }
+</div>
