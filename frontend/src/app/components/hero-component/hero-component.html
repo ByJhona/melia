@@ -1,19 +1,42 @@
-<header class="hero bg-base-200 -h-screen">
+<div class="hero bg-base-200 -h-screen">
   <div class="hero-content text-center">
     <div class="max-w-md">
       <h1
         class="text-6xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
       >
-        Conheça a Melia
+        Conheça a Mélia
       </h1>
-      <p class="py-6">
+      <div class="badge badge-soft badge-primary badge-xl m-7">
+        <lucide-angular name="sparkles" class="h-5 w-5"></lucide-angular>
+        Sua assistente de e-mails
+      </div>
+
+      <p class="py-6 text-neutral-500">
         Sua assistente de IA que recebe, classifica e responde emails
-        automaticamente. Deixe a Melia cuidar da sua caixa de entrada enquanto
+        automaticamente. Deixe a Mélia cuidar da sua caixa de entrada enquanto
         você foca no que importa.
       </p>
-      <button class="btn btn-primary">
-        Pular para decifrar email ou codigo
-      </button>
+
+      <div class="info-cards flex gap-4 mt-10 justify-center">
+        <melia-card-medium-component
+          icon="mail"
+          color="text-blue-600"
+          title="Recebe seus Emails"
+          message="A Mélia analisa cada email que chega na sua caixa de entrada"
+        />
+        <melia-card-medium-component
+          icon="zap"
+          color="text-green-600"
+          title="Classifica Automaticamente"
+          message="Identifica emails produtivos e improdutivos instantaneamente"
+        />
+        <melia-card-medium-component
+          icon="target"
+          color="text-yellow-600"
+          title="Responde por Você"
+          message="Gera respostas profissionais e apropriadas automaticamente"
+        />
+      </div>
     </div>
   </div>
-</header>
+</div>
