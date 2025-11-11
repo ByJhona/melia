@@ -4,7 +4,7 @@ import { CardFormAnalizeComponent } from '../../components/card-form-analize-com
 import { ApiService } from '../../services/api-service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ToastService } from '../../services/toast-service';
-import { ToastEnum } from '../../types/ToastEnum';
+import { TextAnalysisResponseInterface } from '../../types/TextAnalysisResponseInterface';
 
 @Component({
   selector: 'melia-home-page',
@@ -30,7 +30,10 @@ export class HomePage {
       .sendFile(file)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () => this.toastServ.success('Arquivo enviado com sucesso!'),
+        next: (result: TextAnalysisResponseInterface) => {
+          console.log(result);
+          this.toastServ.success('Arquivo enviado com sucesso!');
+        },
         error: () => this.toastServ.error('Erro ao enviar arquivo.'),
       });
   }
@@ -40,12 +43,10 @@ export class HomePage {
       .sendText(text)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () =>
-          this.toastServ.show(
-            'Texto enviado com sucesso!',
-            ToastEnum.SUCCESS,
-            5000
-          ),
+        next: (result: TextAnalysisResponseInterface) => {
+          console.log(result);
+          this.toastServ.success('Texto enviado com sucesso!');
+        },
         error: () => this.toastServ.error('Erro ao enviar texto.'),
       });
   }
