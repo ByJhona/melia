@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://meu-backend.com/api',
+  apiUrl: 'https://meu-backend.com/',
 };

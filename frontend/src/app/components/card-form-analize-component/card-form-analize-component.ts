@@ -33,13 +33,14 @@ export class CardFormAnalizeComponent {
     this.selectedFile.set(file);
   }
 
-  onSubmit() {
+  onSubmit(fileInput: HTMLInputElement) {
     const email = this.getFormControl('email').value?.trim();
     const file = this.selectedFile();
 
     if (file) {
       this.emailSent.emit(file);
       this.selectedFile.set(null);
+      fileInput.value = '';
     } else if (email) {
       this.emailSent.emit(email);
       this.form.reset();

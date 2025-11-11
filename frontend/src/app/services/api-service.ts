@@ -12,16 +12,19 @@ export class ApiService {
   private readonly baseUrl = environment.apiUrl;
 
   sendText(text: string): Observable<ResponseInterface> {
-    return this.http.post<ResponseInterface>(`${this.baseUrl}/send-text`, {
-      text,
-    });
+    const formData = new FormData();
+    formData.append('email', text);
+    return this.http.post<ResponseInterface>(
+      `${this.baseUrl}/api/submit-text`,
+      formData
+    );
   }
 
   sendFile(file: File): Observable<ResponseInterface> {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post<ResponseInterface>(
-      `${this.baseUrl}/upload`,
+      `${this.baseUrl}/api/submit-file`,
       formData
     );
   }

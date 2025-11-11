@@ -8,7 +8,7 @@
       resposta
     </p>
 
-    <form [formGroup]="form" (submit)="onSubmit()">
+    <form [formGroup]="form" (submit)="onSubmit(fileInput)">
       <textarea
         class="textarea w-full"
         placeholder="Cole o e-mail que você recebeu..."
@@ -16,6 +16,7 @@
       ></textarea>
       <div class="justify-center card-actions pt-6">
         <input
+          #fileInput
           class="file-input hover: text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
           type="file"
           accept=".txt,.pdf"
