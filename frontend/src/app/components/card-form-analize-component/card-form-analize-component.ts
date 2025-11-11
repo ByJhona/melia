@@ -14,13 +14,7 @@ export class CardFormAnalizeComponent {
   });
 
   private readonly selectedFile = signal<File | null>(null);
-
-  emailFileSelected = output<File | null>();
-  emailSent = output<string | File>();
-
-  getFormControl(name: string): FormControl {
-    return this.form.get(name) as FormControl;
-  }
+  public readonly emailSent = output<string | File>();
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -29,7 +23,6 @@ export class CardFormAnalizeComponent {
     if (file && file.size > 5 * 1024 * 1024) {
       alert('Arquivo excede 5MB!');
       this.selectedFile.set(null);
-      this.emailFileSelected.emit(null);
       return;
     }
 
@@ -38,7 +31,6 @@ export class CardFormAnalizeComponent {
     }
 
     this.selectedFile.set(file);
-    this.emailFileSelected.emit(file);
   }
 
   onSubmit() {
@@ -46,15 +38,17 @@ export class CardFormAnalizeComponent {
     const file = this.selectedFile();
 
     if (file) {
-      console.log('📤 Enviando arquivo:', file.name);
       this.emailSent.emit(file);
       this.selectedFile.set(null);
     } else if (email) {
-      console.log('✉️ Enviando mensagem:', email);
       this.emailSent.emit(email);
       this.form.reset();
     } else {
       alert('Por favor, informe um texto ou selecione um arquivo!');
     }
+  }
+
+  getFormControl(name: string): FormControl {
+    return this.form.get(name) as FormControl;
   }
 }
