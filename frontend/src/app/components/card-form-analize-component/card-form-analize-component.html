@@ -3,32 +3,36 @@
     <h2 class="card-title">
       <lucide-angular name="sparkle" class="text-primary" /> Análise de Email
     </h2>
-    <p class="text-neutral-800 m-2">
+    <p class="text-base-content/70 m-2">
       Cole o email que você recebeu e a Mél.IA irá classificar e sugerir uma
       resposta
     </p>
 
-    <form [formGroup]="form" (submit)="onSubmit(fileInput)">
+    <form
+      [formGroup]="form"
+      (submit)="onSubmit(fileInput)"
+      class="flex flex-col"
+    >
       <textarea
         class="textarea w-full"
         placeholder="Cole o e-mail que você recebeu..."
         [formControl]="getFormControl('email')"
       ></textarea>
-      <div class="justify-center card-actions pt-6">
-        <input
-          #fileInput
-          class="file-input hover: text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
-          type="file"
-          accept=".txt,.pdf"
-          (change)="onFileChange($event)"
-        />
 
-        <button class="btn btn-primary" type="submit">
-          Analisar com Mél.IA
-        </button>
-      </div>
+      <div class="divider">OU</div>
+
+      <input
+        #fileInput
+        class="file-input hover: text-transparent bg-clip-text bg-linear-to-r from-primary to-accent self-center"
+        type="file"
+        accept=".txt,.pdf"
+        (change)="onFileChange($event)"
+      />
+      <div class="divider"></div>
+      <button class="btn btn-primary self-center" type="submit">
+        Analisar com Mél.IA
+      </button>
     </form>
-    <div class="divider"></div>
     <div class="prerequisitos-info">
       <ul class="bg-base-100">
         <li class="text-xs opacity-60 mb-0.5">
