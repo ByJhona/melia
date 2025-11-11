@@ -6,7 +6,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ToastService } from '../../services/toast-service';
 import { TextAnalysisResponseInterface } from '../../types/TextAnalysisResponseInterface';
 import { CardAnalysisResult } from '../../components/card-analysis-result/card-analysis-result';
-import { ViewportScroller } from '@angular/common';
 import { take } from 'rxjs';
 
 @Component({
@@ -20,7 +19,6 @@ export class HomePage {
   private readonly ngZone = inject(NgZone);
   private readonly apiServ = inject(ApiService);
   private readonly toastServ = inject(ToastService);
-  private readonly scroller = inject(ViewportScroller);
   analisysisResult = signal<TextAnalysisResponseInterface | null>(null);
 
   onEmailSent(payload: string | File) {

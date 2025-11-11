@@ -8,4 +8,11 @@ import { CardMediumComponent } from '../card-medium-component/card-medium-compon
   templateUrl: './hero-component.html',
   styleUrl: './hero-component.scss',
 })
-export class HeroComponent {}
+export class HeroComponent {
+  scrollToForm() {
+    const el = document.getElementById('email-form');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
