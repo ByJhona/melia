@@ -9,7 +9,6 @@ from app.models.text_model import TextAnalysisResponse
 def process_text_with_ai(text: str) -> TextAnalysisResponse:
     cleaned = clean_text(text)
 
-    # Prompt avançado
     prompt = f"""
     Você é a Mel.ia, uma assistente virtual para automatizar o processamento
     de emails de uma grande empresa financeira.

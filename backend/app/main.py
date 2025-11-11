@@ -1,8 +1,33 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
+import asyncio
 from app.routers import email_routes
+from app.core.email_monitor import process_new_emails  
+from app.core.config import settings
 
-app = FastAPI(title="Email Classifier API")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Lifespan handler para iniciar o agendador quando a aplicação sobe.
+    """
+    async def scheduler():
+        while True:
+            try:
+                print("Verificando novos e-mails...")
+                process_new_emails() 
+            except Exception as e:
+                print("Erro ao processar e-mails:", e)
+            await asyncio.sleep(settings.EMAIL_CHECK_INTERVAL)
+    task = asyncio.create_task(scheduler())
+    yield
+    task.cancel()  
+
+app = FastAPI(
+    title="Email Classifier API",
+    lifespan=lifespan
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -16,4 +41,4 @@ app.include_router(email_routes.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Email Classifier API está rodando 🚀"}
+    return {"message": "Mel.ia Classifier API está rodando 🚀"}
