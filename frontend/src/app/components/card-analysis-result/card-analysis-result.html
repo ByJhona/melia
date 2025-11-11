@@ -1,0 +1,30 @@
+@if(analysis() !== null) {
+<div id="analysis-result" class="card w-4xl bg-base-100 card-xl shadow-md">
+  <div class="card-body">
+    <h2 class="card-title">
+      <lucide-angular name="target" class="text-primary" />Resultado da Análise
+    </h2>
+
+    @if(analysis()?.filename){
+    <p><strong>Nome do Aquivo: </strong> {{ analysis()?.filename }}</p>
+
+    }
+
+    <p><strong>Categoria: </strong> {{ analysis()?.category }}</p>
+    <p><strong>Mensagem Original: </strong> {{ analysis()?.original }}</p>
+    <div class="flex flex-col gap-2 mt-2">
+      <label for="response" class="font-bold">Resposta Sugerida:</label>
+      <textarea
+        id="response"
+        class="textarea w-full resize-none"
+        [formControl]="getFormControl('response')"
+        rows="4"
+      ></textarea>
+      <button class="btn btn-sm btn-outline self-end" (click)="copyResponse()">
+        Copiar
+      </button>
+    </div>
+  </div>
+</div>
+
+}
