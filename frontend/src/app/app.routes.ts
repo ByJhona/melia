@@ -7,6 +7,11 @@ export const routes: Routes = [
       import('./pages/home-page/home-page').then((m) => m.HomePage),
   },
   {
+    path: 'about',
+    loadComponent: () =>
+      import('./pages/about-page/about-page').then((m) => m.AboutPage),
+  },
+  {
     path: 'not-found',
     loadComponent: () =>
       import('./pages/not-found-page/not-found-page').then(
