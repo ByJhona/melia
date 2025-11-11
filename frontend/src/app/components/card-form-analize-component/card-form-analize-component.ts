@@ -1,4 +1,4 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
 import { ToastService } from '../../services/toast-service';
@@ -10,6 +10,7 @@ import { ToastService } from '../../services/toast-service';
   styleUrl: './card-form-analize-component.scss',
 })
 export class CardFormAnalizeComponent {
+  public readonly isloading = input<boolean>(false);
   private readonly toastServ = inject(ToastService);
   public readonly form = new FormGroup({
     email: new FormControl<string>(''),

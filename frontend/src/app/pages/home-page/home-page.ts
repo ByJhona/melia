@@ -19,7 +19,9 @@ export class HomePage {
   private readonly ngZone = inject(NgZone);
   private readonly apiServ = inject(ApiService);
   private readonly toastServ = inject(ToastService);
-  analisysisResult = signal<TextAnalysisResponseInterface | null>(null);
+  public readonly isloading = signal<boolean>(false);
+  public readonly analisysisResult =
+    signal<TextAnalysisResponseInterface | null>(null);
 
   onEmailSent(payload: string | File) {
     if (payload instanceof File) {
@@ -30,6 +32,7 @@ export class HomePage {
   }
 
   private sendFile(file: File) {
+    this.isloading.set(true);
     this.apiServ
       .sendFile(file)
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -49,10 +52,15 @@ export class HomePage {
           this.analisysisResult.set(null);
           this.toastServ.error('Erro ao enviar arquivo.');
         },
+        complete: () => {
+          this.isloading.set(false);
+        },
       });
   }
 
   private sendText(text: string) {
+    this.isloading.set(true);
+
     this.apiServ
       .sendText(text)
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -71,6 +79,9 @@ export class HomePage {
         error: () => {
           this.analisysisResult.set(null);
           this.toastServ.error('Erro ao enviar texto.');
+        },
+        complete: () => {
+          this.isloading.set(false);
         },
       });
   }

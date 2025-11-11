@@ -30,7 +30,10 @@
       />
       <div class="divider"></div>
       <button class="btn btn-primary self-center" type="submit">
-        Analisar com Mél.IA
+        @if(isloading() ) {
+        <span class="loading loading-spinner"></span>
+
+        } Analisar com Mél.IA
       </button>
     </form>
     <div class="prerequisitos-info">
