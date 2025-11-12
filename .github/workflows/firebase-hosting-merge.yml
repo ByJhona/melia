@@ -22,4 +22,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MELIA_BYJHONA }}
           channelId: live
           projectId: melia-byjhona
-          entryPoint: ./
+          entryPoint: ./frontend
