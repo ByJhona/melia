@@ -75,18 +75,16 @@ Crie e ative um ambiente virtual:
 
 Crie um arquivo `.env` na pasta do backend com as seguintes variáveis:
 
-OPENAI_API_KEY=sk-...
-IMAP_HOST=imap.exemplo.com
-IMAP_PORT=993
-IMAP_USER=usuario@exemplo.com
-
-IMAP_PASS=senha
-SMTP_HOST=smtp.exemplo.com
-SMTP_PORT=587
-SMTP_USER=usuario@exemplo.com
-
-SMTP_PASS=senha
-CHECK_INTERVAL_SECONDS=300
+- OPENAI_API_KEY=sk-...
+- IMAP_HOST=imap.exemplo.com
+- IMAP_PORT=993
+- IMAP_USER=usuario@exemplo.com
+- IMAP_PASS=senha
+- SMTP_HOST=smtp.exemplo.com
+- SMTP_PORT=587
+- SMTP_USER=usuario@exemplo.com
+- SMTP_PASS=senha
+- CHECK_INTERVAL_SECONDS=300
 
 Instale as dependências:  
 `pip install -r requirements.txt`
