@@ -28,4 +28,8 @@ export class ApiService {
       formData
     );
   }
+
+  ping(): Observable<void> {
+    return this.http.get<void>(`${this.baseUrl}/ping`);
+  }
 }
