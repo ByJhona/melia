@@ -74,6 +74,7 @@ Crie e ative um ambiente virtual:
 `source venv/bin/activate` (Linux/Mac) ou `venv\Scripts\activate` (Windows)
 
 Crie um arquivo `.env` na pasta do backend com as seguintes variáveis:
+
 OPENAI_API_KEY=sk-...
 IMAP_HOST=imap.exemplo.com
 IMAP_PORT=993
