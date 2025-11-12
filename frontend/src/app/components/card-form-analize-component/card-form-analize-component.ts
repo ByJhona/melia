@@ -23,10 +23,7 @@ export class CardFormAnalizeComponent {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0] ?? null;
 
-    if (file && file.size > 5 * 1024 * 1024) {
-      this.toastServ.error(
-        'O arquivo selecionado excede o tamanho máximo de 5MB.'
-      );
+    if (!this.validateFile(file)) {
       input.value = '';
       this.selectedFile.set(null);
       return;
@@ -37,6 +34,26 @@ export class CardFormAnalizeComponent {
     }
 
     this.selectedFile.set(file);
+  }
+
+  private validateFile(file: File | null): boolean {
+    if (file === null) return false;
+    if (file.size > 5 * 1024 * 1024) {
+      this.toastServ.error(
+        'O arquivo selecionado excede o tamanho máximo de 5MB.'
+      );
+      return false;
+    }
+
+    const allowedExtensions = ['pdf', 'txt'];
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+
+    if (!fileExtension || !allowedExtensions.includes(fileExtension)) {
+      this.toastServ.error('Apenas arquivos .pdf e .txt são permitidos.');
+      return false;
+    }
+
+    return true;
   }
 
   onSubmit(fileInput: HTMLInputElement) {
