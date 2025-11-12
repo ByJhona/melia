@@ -1,49 +1,53 @@
-<div class="hero bg-primary/5">
-  <div class="hero-content text-center">
-    <div class="max-w-md">
+<div class="hero bg-primary/5 flex items-center justify-center">
+  <div class="hero-content text-center flex flex-col gap-6">
+    <div class="title flex flex-col items-center">
       <h1
-        class="text-6xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
+        class="text-6xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary to-accent mt-4"
       >
-        Conheça a Mel.ia
+        Conheça a <br />
+        Mel.ia <br />
       </h1>
       <div class="badge badge-soft badge-primary badge-xl m-7">
         <lucide-angular name="sparkles" class="h-5 w-5"></lucide-angular>
         Sua assistente de e-mails
       </div>
+    </div>
 
+    <div class="description flex flex-col items-center max-w-2xl">
       <p class="py-6 text-base-content/70">
         Sua assistente de IA que recebe, classifica e responde emails
         automaticamente. Deixe a Mel.ia cuidar da sua caixa de entrada enquanto
         você foca no que importa.
       </p>
-
       <button
         (click)="scrollToForm()"
         class="btn bg-linear-to-r from-primary to-accent btn-lg text-base-100 hover:scale-105 transition-transform"
       >
         Comece agora grátis
       </button>
+    </div>
 
-      <div class="info-cards flex gap-4 mt-10 justify-center">
-        <melia-card-medium-component
-          icon="mail"
-          color="text-blue-600"
-          title="Recebe seus Emails"
-          message="A Mel.ia analisa cada email que chega na sua caixa de entrada"
-        />
-        <melia-card-medium-component
-          icon="zap"
-          color="text-green-600"
-          title="Classifica Automaticamente"
-          message="Identifica emails produtivos e improdutivos instantaneamente"
-        />
-        <melia-card-medium-component
-          icon="target"
-          color="text-yellow-600"
-          title="Responde por Você"
-          message="Gera respostas profissionais e apropriadas automaticamente"
-        />
-      </div>
+    <div
+      class="info-cards flex flex-col gap-4 sm:flex-row flex-wrap justify-center mt-10"
+    >
+      <melia-card-medium-component
+        icon="mail"
+        color="text-blue-600"
+        title="Recebe seus Emails"
+        message="A Mel.ia analisa cada email que chega na sua caixa de entrada"
+      />
+      <melia-card-medium-component
+        icon="zap"
+        color="text-green-600"
+        title="Classifica Automaticamente"
+        message="Identifica emails produtivos e improdutivos instantaneamente"
+      />
+      <melia-card-medium-component
+        icon="target"
+        color="text-yellow-600"
+        title="Responde por Você"
+        message="Gera respostas profissionais e apropriadas automaticamente"
+      />
     </div>
   </div>
 </div>
