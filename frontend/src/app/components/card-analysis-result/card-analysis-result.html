@@ -5,7 +5,7 @@
       <lucide-angular name="target" class="text-primary" />Resultado da Análise
     </h2>
 
-    @if(analysis()?.filename){
+    @if(analysis()?.filename !== undefined){
     <p><strong>Nome do Aquivo: </strong> {{ analysis()?.filename }}</p>
 
     }

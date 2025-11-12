@@ -6,7 +6,7 @@ from .text_processing import clean_text
 from app.core.openia_client import generate_text
 from app.models.text_model import TextAnalysisResponse
 
-def process_text_with_ai(text: str) -> TextAnalysisResponse:
+def process_text_with_ai(text: str, filename:str = None) -> TextAnalysisResponse:
     cleaned = clean_text(text)
 
     prompt = f"""
@@ -49,7 +49,7 @@ def process_text_with_ai(text: str) -> TextAnalysisResponse:
         response_text = ai_response
 
     return TextAnalysisResponse(
-        filename=None,
+        filename=filename,
         original=text,
         cleaned=cleaned,
         category=category,
@@ -68,4 +68,4 @@ async def process_file_with_ai(file: UploadFile) -> TextAnalysisResponse:
     else:
         raise ValueError("Arquivo deve ser .txt ou .pdf")
 
-    return process_text_with_ai(text)
+    return process_text_with_ai(text, filename)
