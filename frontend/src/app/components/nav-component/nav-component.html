@@ -1,19 +1,20 @@
-<div class="navbar bg-base-100 shadow-sm min-w-fit overflow-hidden">
-  <div class="flex-1">
-    <div class="icon flex flex-row items-center gap-2 ml-8">
-      <img src="icon.png" alt="Ícone da Mel.ia" class="h-7 w-8" />
-      <span
-        class="text-xl text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
-        >Mel.ia</span
-      >
-    </div>
+<div
+  class="navbar bg-base-100 shadow-sm overflow-auto min-w-fit items-center justify-between pr-4 pl-4"
+>
+  <div class="icon flex flex-row items-center gap-2">
+    <img src="icon.png" alt="Ícone da Mel.ia" class="h-7 w-8" />
+    <span
+      class="text-xl text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
+    >
+      Mel.ia
+    </span>
   </div>
-  <div class="flex-none mr-8">
+  <div class="flex flex-row items-center gap-4 ml-4">
     <ul class="menu menu-horizontal px-1">
-      <li><a routerLink="/">Ínicio</a></li>
+      <li><a routerLink="/">Início</a></li>
       <li><a routerLink="/history">Histórico</a></li>
       <li><a routerLink="/about">Sobre</a></li>
     </ul>
+    <melia-bnt-toggle-theme />
   </div>
-  <melia-bnt-toggle-theme />
 </div>
